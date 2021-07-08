@@ -1,0 +1,54 @@
+Chest
+Crafting Table
+Furnace
+Stick
+Torches
+Wood Planks
+Axes
+Bucket
+Carrot on a Stick
+Clock
+Compass
+Fishing Rod
+Flint and Steel
+Hoe
+Map
+Pickaxe
+Shears
+Shovel
+Arrows
+Bow
+Damaged Shield
+Patterned Shield
+Shield
+Spectral Arrow
+Sword
+Tipped Arrows
+Boots
+Chestplate
+Helmet
+Leggings
+Andesite
+Anvil
+Beacon
+Block of Coal
+Block of Quartz
+Block of Redstone
+Bone Block
+Bookshelf
+Brick Block
+Chiseled Sandstone
+Chiseled Stone Brick
+Clay Block
+Coarse Dirt
+Dark Prismarine
+Diorite
+End Stone Bricks
+Glowstone
+Granite
+Hay Bale
+
+
+
+
+
