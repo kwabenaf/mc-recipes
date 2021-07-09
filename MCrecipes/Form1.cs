@@ -19,13 +19,14 @@ namespace MCrecipes
         //Draggable form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
-
+        //Draggable form
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         //Rounding the corners of the form
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
+        //Rounding form
         private static extern IntPtr CreateRoundRectRgn
         (
             int nLeftRect,
@@ -170,7 +171,14 @@ namespace MCrecipes
             this.WindowState = FormWindowState.Minimized;
         }
 
-        //SEARCHBAR
+        //making the form draggable
+        private void pnlDrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        //SEARCHBAR CLEARING
         private void txtSearch_Click(object sender, EventArgs e)
         {
 
@@ -184,6 +192,7 @@ namespace MCrecipes
             }
         }
 
+        
         void showLbl()
         {
             lblItemname.Show();
@@ -203,8 +212,10 @@ namespace MCrecipes
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        //method for the search commands
+        void searchClick() 
         {
+
             //To remove the error message so it's not there the whole time
             lblError.Text = "";
 
@@ -222,7 +233,7 @@ namespace MCrecipes
                 da.Fill(table);
 
                 showLbl();
-              
+
                 lblName.Text = table.Rows[0][1].ToString();
                 lblIng.Text = table.Rows[0][3].ToString();
 
@@ -236,7 +247,7 @@ namespace MCrecipes
 
             catch (IndexOutOfRangeException)
             {
-      
+
                 lblError.Text = "Sorry that Item cannot be found";
 
                 hideLbl();
@@ -244,12 +255,22 @@ namespace MCrecipes
 
 
             }
+
         }
 
-        private void pnlDrag_MouseDown(object sender, MouseEventArgs e)
+        //actually searching by click
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            searchClick();
+        }
+
+        //searching by enter
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) 
+            {
+                searchClick();
+            }
         }
     }
 }

@@ -244,6 +244,7 @@ namespace MCrecipes
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search...";
             this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // btnClose
             // 

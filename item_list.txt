@@ -47,8 +47,3 @@ End Stone Bricks
 Glowstone
 Granite
 Hay Bale
-
-
-
-
-
