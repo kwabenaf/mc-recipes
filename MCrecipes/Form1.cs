@@ -45,7 +45,7 @@ namespace MCrecipes
         public Form1()
         {
             InitializeComponent();
-            
+
             //Rounding form
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 
@@ -54,8 +54,8 @@ namespace MCrecipes
             pnlNav.Left = btnHome.Left;
             btnHome.BackColor = Color.FromArgb(45, 106, 79);
 
-            
-           
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -66,6 +66,9 @@ namespace MCrecipes
         //HOME BUTTON
         private void btnHome_Click(object sender, EventArgs e)
         {
+            //opening Search/Home form
+            
+
             //to move the nav bar, change the button color on click
             pnlNav.Height = btnHome.Height;
             pnlNav.Top = btnHome.Top;
@@ -82,6 +85,9 @@ namespace MCrecipes
         //ALL ITEMS BUTTON
         private void btnAll_Click(object sender, EventArgs e)
         {
+            //opening the All Form
+            openChildForm(new allForm());
+            
             //to change the default color of the home button
             btnHome.BackColor = Color.FromArgb(27, 67, 50);
 
@@ -192,7 +198,7 @@ namespace MCrecipes
             }
         }
 
-        
+
         void showLbl()
         {
             lblItemname.Show();
@@ -201,7 +207,7 @@ namespace MCrecipes
             lblIng.Show();
         }
 
-        void hideLbl() 
+        void hideLbl()
         {
 
             lblError.Show();
@@ -213,7 +219,7 @@ namespace MCrecipes
         }
 
         //method for the search commands
-        void searchClick() 
+        void searchClick()
         {
 
             //To remove the error message so it's not there the whole time
@@ -256,6 +262,13 @@ namespace MCrecipes
 
             }
 
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                hideLbl();
+                lblError.Text = "It seems the database is not connected...";
+            }
+
+
         }
 
         //actually searching by click
@@ -267,10 +280,25 @@ namespace MCrecipes
         //searching by enter
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) 
+            if (e.KeyCode == Keys.Enter)
             {
                 searchClick();
             }
+        }
+
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlForm.Controls.Add(childForm);
+            pnlForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
     }
 }

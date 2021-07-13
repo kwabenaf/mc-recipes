@@ -22,3 +22,4 @@ D:\theproject\MCrecipes\bin\Debug\K4os.Hash.xxHash.dll
 D:\theproject\MCrecipes\bin\Debug\System.Numerics.Vectors.dll
 D:\theproject\MCrecipes\bin\Debug\MySql.Data.xml
 D:\theproject\MCrecipes\obj\Debug\MCrecipes.csproj.CopyComplete
+D:\theproject\MCrecipes\obj\Debug\MCrecipes.allForm.resources
